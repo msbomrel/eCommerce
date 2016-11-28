@@ -44,20 +44,6 @@ include ('header.php');
                 while ($row = mysqli_fetch_assoc($results3))
                 {
                     ?>
-                    <!--<div class="items" style="align-content: center">
-                                  //  <img src='product_images/<?php /*echo $row["prod_image"]*/?>'> <br>
-                                  //  <strong><?php /*echo mb_strtoupper($row["name"]);*/?></strong><br>
-                                    Price : Rs <?php /*echo $row["price"];*/?><br>
-                                    <?php /*echo $row["stock"];*/?> items in Stock<br>
-                                    Discount : Rs <?php /*echo $row["discount"];*/?><br>
-                                    Description : <?php /*echo $row["description"];*/?><br>
-                                    <div class="ui vertical animated primary button" tabindex="0">
-                                        <div class="hidden content">Shop</div>
-                                        <div class="visible content">
-                                            <i class="shop icon"></i>
-                                        </div>
-                                    </div>
-                        </div>-->
             <div class="ui info message">
             <div class="ui items">
                 <div class="item">
