@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - ecommerce@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="ecommerce">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="bloodbank"/>
+    <schema id="3" name="demo"/>
+    <schema id="4" name="dwit"/>
+    <schema id="5" name="gate_login"/>
+    <schema id="6" name="information_schema"/>
+    <schema id="7" name="java"/>
+    <schema id="8" name="mysql"/>
+    <schema id="9" name="nilguru"/>
+    <schema id="10" name="performance_schema"/>
+    <schema id="11" name="phpmyadmin"/>
+    <schema id="12" name="practice"/>
+    <schema id="13" name="prophp"/>
+    <schema id="14" name="sys"/>
+    <schema id="15" name="test1"/>
+    <schema id="16" name="timetable"/>
+    <table id="17" parent="1" name="category"/>
+    <table id="18" parent="1" name="cost"/>
+    <table id="19" parent="1" name="product"/>
+    <table id="20" parent="1" name="users"/>
+    <column id="21" parent="17" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="22" parent="17" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="23" parent="17" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="24" parent="17" name="image">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="25" parent="17" name="page_title">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="26" parent="17" name="page_keyword">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="27" parent="17" name="page_description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <index id="28" parent="17" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="29" parent="17" name="id">
+      <columns>id</columns>
+      <underlying-index>id</underlying-index>
+    </key>
+    <column id="30" parent="18" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(5)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="31" parent="18" name="session_id">
+      <mandatory>1</mandatory>
+      <data-type>int(5)|0</data-type>
+    </column>
+    <column id="32" parent="18" name="product_id">
+      <mandatory>1</mandatory>
+      <data-type>int(5)|0</data-type>
+    </column>
+    <column id="33" parent="18" name="qty">
+      <mandatory>1</mandatory>
+      <data-type>int(5)|0</data-type>
+    </column>
+    <key id="34" parent="18" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="35" parent="19" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="36" parent="19" name="category_id">
+      <data-type>int(20)|0</data-type>
+    </column>
+    <column id="37" parent="19" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="38" parent="19" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(500)|0</data-type>
+    </column>
+    <column id="39" parent="19" name="price">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="40" parent="19" name="stock">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="41" parent="19" name="is_sale">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="42" parent="19" name="prod_image">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="43" parent="19" name="discount">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <index id="44" parent="19" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="45" parent="19" name="id">
+      <columns>id</columns>
+      <underlying-index>id</underlying-index>
+    </key>
+    <column id="46" parent="20" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="47" parent="20" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="48" parent="20" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(50)|0</data-type>
+    </column>
+    <column id="49" parent="20" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="50" parent="20" name="role">
+      <mandatory>1</mandatory>
+      <data-type>enum(&apos;admin&apos;, &apos;superadmin&apos;)|0</data-type>
+    </column>
+    <column id="51" parent="20" name="status">
+      <mandatory>1</mandatory>
+      <data-type>enum(&apos;active&apos;, &apos;passive&apos;)|0</data-type>
+    </column>
+    <index id="52" parent="20" name="id">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="53" parent="20" name="id">
+      <columns>id</columns>
+      <underlying-index>id</underlying-index>
+    </key>
+  </database-model>
+</dataSource>
