@@ -9,7 +9,7 @@ include("include/connect.php");
     /*$query1 = "select * from product";
     $results2 = mysqli_query($conn,$query1) or die("Cannot connect");*/
 
-    $query3 = "select  * from product WHERE id= '$pid'";
+    $query3 = "select * from product WHERE id= '$pid'";
 
     $results3 = mysqli_query($conn, $query3);
 ?>
@@ -45,7 +45,6 @@ include ('header.php');
                 while ($row = mysqli_fetch_assoc($results3))
                 {
                     ?>
-
             <div class="ui info message">
             <div class="ui items">
                 <div class="item">

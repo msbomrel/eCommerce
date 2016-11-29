@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/themes/default/assets/fonts/icons.ttf ">
     <link rel="stylesheet" href="css/custom.css">
 </head>
-<div class="ui pointing fixed menu">
+<div class="ui inverted fixed menu">
     <div class="ui container">
         <a href="index.php" class="header item">
             <img class="logo" src="images/logo.png">
@@ -25,19 +25,14 @@
         <a href="#" class="item">Special Offers</a>
         <a href="#" class="item">Delivery</a>
         <a href="#" class="item">Contact Us</a>
-
         <div class="right menu">
-          <!--  <form action="searchResult.php" method="post">-->
             <form class="item" action="searchResults.php" method="post">
                 <div class="ui transparent icon input">
-                    <input type="text" name="search" placeholder="I want...">
-                    <i class="search link icon"></i>
+                    <input type="text" name="search" style="color: whitesmoke;" placeholder="Search products">
+                    <i style="color: whitesmoke;" class="search link icon"></i>
                 </div>
                 <input type="hidden" name="submit">
             </form>
-               <!-- -->
-           <!-- </form>-->
-
             <?php
             session_start();
             if(!isset($_SESSION['user'])){
@@ -49,7 +44,7 @@
             <div class="ui button" onclick="location.href='login.php';">Log-in</div>
         </div> <?php }
         else { ?> <div class="right menu">
-                     <div class="item">Welcome <?php echo strtoupper($_SESSION['user'])?> !!!</div>
+                     <div class="item"> <i class="user icon"></i> Welcome <?php echo strtoupper($_SESSION['user'])?> !!!</div>
                         <?php if(isset($_SESSION['role'])){
                             if($_SESSION['role'] == "admin"){
                                 ?>
@@ -62,7 +57,7 @@
                                 </div>
                                <?php } else {?>
                                 <div class="item">
-                                    <div class="button" onclick="location.href='viewCart.php';">Your Cart Details</div>
+                                    <button class="ui button piled" onclick="location.href='viewCart.php';">Your Cart Details</button>
                                 </div>
                         <?php }
                         }?>

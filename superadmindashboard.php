@@ -86,6 +86,5 @@ alert(window.location='login.php');
 </table>
 </div>
 <?php include ('footer.php')?>
-<script src="js/semantic.min.js"></script>
 </body>
 </html>

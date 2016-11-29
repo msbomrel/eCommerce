@@ -11,16 +11,17 @@ include ('include/connect.php');
 
 if (isset($_SESSION['user'])) {
     if(isset($_POST['submit'])) {
+        $user = $_SESSION['user'];
         $sid = session_id();
         $pid = $_GET['id'];
         $qty = $_POST['qty'];
 
-        $sql = "insert into cost (session_id,product_id,qty) VALUES ('$sid','$pid','$qty')";
+        $sql = "insert into cost (username,session_id,product_id,qty) VALUES ('$user','$sid','$pid','$qty')";
         $res = mysqli_query($conn, $sql) or die("dbms error");
         if ($res) {
 
             echo "<script>alert('Item added successfully!!');</script>";
-            echo "<script>window.location = 'index.php';</script>";
+            echo "<script>window.location = 'viewCart.php';</script>";
 
         }
     }
