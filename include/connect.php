@@ -5,7 +5,6 @@
  * Date: 11/10/16
  * Time: 6:54 PM
  */
-session_start();
 $dbname = "ecommerce";
 $dbusername= "root";
 $password="123";

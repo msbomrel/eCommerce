@@ -1,11 +1,23 @@
 <?php
+session_start();
+
 include("include/connect.php");
-$query = "select * from category";
-$results1 = mysqli_query($conn,$query) or die("Cannot connect");
+if(isset($_SESSION['user'])) {
 
-$query1 = "select * from product";
-$results2 = mysqli_query($conn,$query1) or die("Cannot connect");
+    $query = "select * from category";
+    $results1 = mysqli_query($conn, $query) or die("Cannot connect");
 
+    $query1 = "select * from product";
+    $results2 = mysqli_query($conn, $query1) or die("Cannot connect");
+}
+else{
+    ?>
+    <script>
+        alert('You Are Not Logged In !! Please Login to access this page');
+        alert(window.location='login.php');
+    </script>
+    <?php
+}
 ?>
 <html>
 <head>
@@ -67,11 +79,11 @@ $results2 = mysqli_query($conn,$query1) or die("Cannot connect");
         <a href="#" class="item">Delivery</a>
         <a href="#" class="item">Contact Us</a>
         <div class="right menu">
-              <div class="item">Welcome User !</div>
+              <div class="item">Welcome <?php echo strtoupper($_SESSION['user'])?> !!!</div>
             <div class="item">
                 <div class="ui button" onclick="location.href='logout.php';">LogOut</div>
             </div>
-    </div>
+        </div>
 </div>
 </div>
 

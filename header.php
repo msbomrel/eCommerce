@@ -17,27 +17,60 @@
     <link rel="stylesheet" href="css/custom.css">
 </head>
 <div class="ui pointing fixed menu">
-    <div class="ui blurring container">
-        <a href="#" class="header item">
+    <div class="ui container">
+        <a href="index.php" class="header item">
             <img class="logo" src="images/logo.png">
         </a>
         <a href="index.php" class="item">Bomrel Store</a>
         <a href="#" class="item">Special Offers</a>
         <a href="#" class="item">Delivery</a>
         <a href="#" class="item">Contact Us</a>
+
         <div class="right menu">
-            <div class="item">
+          <!--  <form action="searchResult.php" method="post">-->
+            <form class="item" action="searchResults.php" method="post">
                 <div class="ui transparent icon input">
-                    <input type="text" placeholder="Search...">
+                    <input type="text" name="search" placeholder="I want...">
                     <i class="search link icon"></i>
                 </div>
-            </div>
+                <input type="hidden" name="submit">
+            </form>
+               <!-- -->
+           <!-- </form>-->
+
+            <?php
+            session_start();
+            if(!isset($_SESSION['user'])){
+            ?>
             <div class="item">
                 <div class="ui primary button" onclick="location.href='users/register.php';"">Sign up</div>
         </div>
         <div class="item">
             <div class="ui button" onclick="location.href='login.php';">Log-in</div>
-        </div>
+        </div> <?php }
+        else { ?> <div class="right menu">
+                     <div class="item">Welcome <?php echo strtoupper($_SESSION['user'])?> !!!</div>
+                        <?php if(isset($_SESSION['role'])){
+                            if($_SESSION['role'] == "admin"){
+                                ?>
+                                <div class="item">
+                                    <div class="button" onclick="location.href='admindashboard.php';">AdminDash</div>
+                                </div>
+                                <?php } elseif ($_SESSION['role'] == "superadmin") { ?>
+                                <div class="item">
+                                    <div class="button" onclick="location.href='superadmindashboard.php';">SuperAdminDash</div>
+                                </div>
+                               <?php } else {?>
+                                <div class="item">
+                                    <div class="button" onclick="location.href='viewCart.php';">Your Cart Details</div>
+                                </div>
+                        <?php }
+                        }?>
+                     <div class="item">
+                         <div class="ui button" onclick="location.href='logout.php';">LogOut</div>
+                     </div>
+                 </div>
+        <?php }?>
     </div>
 </div>
 </div>

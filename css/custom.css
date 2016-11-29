@@ -55,3 +55,11 @@ footer{
     margin: 5em 0em 0em;
     padding: 5em 0em;
 }
+img {
+    max-width: 100%;
+    height: auto;
+}
+.image{
+    max-width: 100%;
+    height: auto;
+}

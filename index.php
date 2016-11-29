@@ -56,7 +56,7 @@ include ('header.php');
                                 <?php echo $row["price"];?><br>
 
                                 <div class="ui vertical animated blue button" tabindex="0">
-                                    <div class="hidden content">Shop</div>
+                                    <div class="hidden content"> <a href="productDetails.php?id=<?php echo $row["id"]?>">Shop</a></div>
                                     <div class="visible content">
                                         <i class="shop icon"></i>
                                     </div>

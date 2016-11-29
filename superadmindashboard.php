@@ -1,8 +1,20 @@
 <?php
+session_start();
 include("include/connect.php");
-$query = "select * from users";
-$results = mysqli_query($conn,$query) or die("Cannot connect");
-?>
+
+if(isset($_SESSION['user'])) {
+    $query = "select * from users";
+    $results = mysqli_query($conn, $query) or die("Cannot connect");
+}else{?>
+
+<script>
+alert('You Are Not Logged In !! Please Login to access this page');
+alert(window.location='login.php');
+</script>
+ <?php
+ }
+ ?>
+
 <html>
 <head>
     <title>User Management</title>
@@ -36,7 +48,7 @@ $results = mysqli_query($conn,$query) or die("Cannot connect");
         <a href="#" class="item">Delivery</a>
         <a href="#" class="item">Contact Us</a>
         <div class="right menu">
-            <div class="item">Welcome User !</div>
+            <div class="item">Welcome <?php echo strtoupper($_SESSION['user'])?> !!!</div>
             <div class="item">
                 <div class="ui button" onclick="location.href='logout.php';">LogOut</div>
             </div>
@@ -66,7 +78,7 @@ $results = mysqli_query($conn,$query) or die("Cannot connect");
             <td><?php echo $row["password"] ?></td>
             <td><?php echo $row["role"] ?></td>
             <td><?php echo $row["status"] ?></td>
-            <td><a href="users/edit.php?id=<?php echo $row["id"]?>">Edit</a></td>
+            <td><a href="users/edituser.php?id=<?php echo $row["id"]?>">Edit</a></td>
             <td><a href="users/deleteuser.php?id=<?php echo $row["id"]?>">Delete</a></td>
         </tr>
     <?php }?>

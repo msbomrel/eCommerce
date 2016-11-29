@@ -33,13 +33,12 @@ $count= 0;
 if(isset($_POST['register'])){
     $name = $_POST['name'];
     $username = ($_POST['username']);
-   // $password = hash('sha512', $password);
     $password = md5($_POST['password']);
     $role = $_POST['adminbox'];
     $status = $_POST['statusbox'];
 
-    $checkuser = mysqli_query($conn, "select username from users where username = '$username'");
-    if(mysqli_num_rows($checkuser) != 0){
+    $checkUser = mysqli_query($conn, "select username from users where username = '$username'");
+    if(mysqli_num_rows($checkUser) != 0){
         echo "Username already exist";
     }
     else
@@ -56,9 +55,34 @@ if(isset($_POST['register'])){
 }
 
 ?>
+<div class="ui pointing fixed menu">
+    <div class="ui blurring container">
+        <a href="#" class="header item">
+            <img class="logo" src="../images/logo.png">
+        </a>
+        <a href="../index.php" class="item">Bomrel Store</a>
+        <a href="#" class="item">Special Offers</a>
+        <a href="#" class="item">Delivery</a>
+        <a href="#" class="item">Contact Us</a>
+        <div class="right menu">
+            <div class="item">
+                <div class="ui transparent icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui primary button" onclick="location.href='users/register.php';"">Sign up</div>
+        </div>
+        <div class="item">
+            <div class="ui button" onclick="location.href='../login.php';">Log-in</div>
+        </div>
+    </div>
+</div>
+</div>
 <div class="ui one column center aligned grid">
     <div class="column three wide form-holder">
-        <h2 class="center aligned header form-head">eCommerce Site</h2>
+        <h2 class="center aligned header form-head">Bomrel store</h2>
         <form action="" method="post">
             <div class="ui form">
                 <div class="field">
@@ -71,9 +95,10 @@ if(isset($_POST['register'])){
                     <input type="password" placeholder="password" name="password">
                 </div>
                 <div class="field">
-                    <select name="adminbox">
+                    <select name="adminbox" id="adminbox">
                         <option value="admin">Admin</option>
                         <option value="superadmin">SuperAdmin</option>
+                        <option value="user">User</option>
                     </select>
                 </div>
                 <div class="field">
@@ -89,8 +114,7 @@ if(isset($_POST['register'])){
     </div>
 </div>
 </div>
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="../js/semantic.min.js"></script>
+<?php include('../footer.php') ?>
 </body>
 </html>
 

@@ -1,14 +1,15 @@
 <?php
+session_start();
 include("include/connect.php");
 $id = $_GET['id'];
 
 $query1 = "select * from category";
 $results1 = mysqli_query($conn,$query1) or die("Cannot connect");
 
-$name = "select * from category WHERE  id='$id'";
+$name = "select * from category WHERE  id=$id";
 $res_name = mysqli_query($conn, $name);
 
-$query2 = "select * from product WHERE category_id='$id'";
+$query2 = "select * from product WHERE category_id=$id";
 $results2 = mysqli_query($conn,$query2) or die("Cannot connect");
 $t = mysqli_num_rows($results2);
 ?>
@@ -58,13 +59,13 @@ $t = mysqli_num_rows($results2);
                                     <?php echo $row["price"];?><br>
 
                                     <div class="ui vertical animated button" tabindex="0">
-                                        <div class="hidden content">Shop</div>
+                                        <div class="hidden content"> <a href="productDetails.php?id=<?php echo $row["id"]?>">Shop</a></div>
                                         <div class="visible content">
                                             <i class="shop icon"></i>
                                         </div>
                                     </div>
-                                    <div class="ui animated button" tabindex="0">
-                                        <div class="hidden content"> Details</div>
+                                    <div class="ui animated google button" tabindex="0">
+                                        <div class="hidden content"> <a href="productDetails.php?id=<?php echo $row["id"]?>">Details</a></div>
                                         <div class="visible content">
                                             <i class="content icon"></i>
                                         </div>

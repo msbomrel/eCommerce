@@ -1,25 +1,42 @@
 <?php
+session_start();
 include("include/connect.php");
 if(isset($_POST['submit'])){
     $username = addslashes($_POST['username']);
-    $password = addslashes($_POST['password']);
+    $password = md5(addslashes($_POST['password']));
 
     $query = "select * from users where username='$username' AND password='$password'";
     $result = mysqli_query($conn,$query);
     $count = mysqli_num_rows($result);
+
     if($count == 1)
     {       while ($row = mysqli_fetch_array($result)){
-        if ($row['role'] == "admin"){
-            header("Location:admindashboard.php");
+            if ($row['role'] == "admin"){
+            $_SESSION['role'] = $row['role'];
+            $_SESSION['user'] = $username;
+            echo "<script>alert('You have logged in successfully!!');</script>";
+            echo "<script>window.location='admindashboard.php';</script>";
+
+            }
+
+            elseif ($row['role'] == "superadmin"){
+            $_SESSION['role'] = $row['role'];
+            $_SESSION['user'] = $username;
+
+            echo "<script>alert('You have logged in successfylly !!');</script>";
+            echo "<script>window.location='superadmindashboard.php';</script>";
+            }
+            else{
+                $_SESSION['user'] =$username;
+                $_SESSION['role'] =$row['role'];
+                echo "<script>alert('You have logged in successfylly !!');</script>";
+                echo "<script>window.location='index.php';</script>";
+            }
         }
-        elseif ($row['role'] == "superadmin"){
-            header("Location:superadmindashboard.php");
-        }
-    }
     }
     else
     {
-        echo "Cannot Log In";
+        echo "<script>alert('Cannot Login !!');</script>";
     }
 }
 ?>
@@ -49,18 +66,19 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
+<?php include ('header.php')?>
 <div class="ui one column center aligned grid">
     <div class="column three wide form-holder">
         <h2 class="center aligned header form-head">BomrelStore</h2>
         <form action="" method="post">
             <div class="ui form">
-                <div class="field">
-                    <i class="flaticon-graduates"></i>
-                    <input type="text" placeholder="username" name="username" required>
+                <div class="ui left icon input">
+                        <i class="user icon"></i>
+                    <input type="text" name="username" placeholder="Username">
                 </div>
-                <div class="field">
-                    <i class="flaticon-plus"></i>
-                    <input type="password" placeholder="password" name="password" required>
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="password" placeholder="Password">
                 </div>
                 <div class="field">
                     <input type="submit" name="submit" value="Sign In" class="ui button large fluid green">
@@ -72,7 +90,10 @@ if(isset($_POST['submit'])){
         </div>
     </div>
 </div>
-<script src="js/semantic.min.js"></script>
+<div class="content">
+
+
+    <?php include "footer.php";?>
 </body>
 </html>
 
