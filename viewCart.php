@@ -17,8 +17,12 @@ if(isset($_SESSION['user'])){
 
     $details = mysqli_query($conn, $sql) or die("dbms 1 ect");
     $items = mysqli_num_rows($details);
+
+    if (mysqli_num_rows($details) == 0){
+        $_SESSION['emptycart'] = "You have not added anything in your Cart. Start Shopping Now !!!";
+    }
 }
-else{
+else {
     ?>
     <script>
         alert('You Are Not Logged In !! Please Login to access this page');
@@ -35,6 +39,10 @@ else{
 <body>
 <?php
 include ('header.php');
+
+if(isset($_SESSION['emptycart'])){
+    $emptycard = $_SESSION['emptycart'];
+}
 ?>
 <!---- content box--->
 <div class="ui main container">
@@ -54,17 +62,14 @@ include ('header.php');
         </div>
         <div class="thirteen wide column">
             <div class="ui fluid message">
-                <h4>Here is the cart details , total items: <?php echo $items ?></h4>
+                <h4>Here is the cart details , total items: <strong> <?php echo $items ?> </strong></h4>
+                <h4><?php echo $emptycard ?></h4>
             </div>
             <?php
-            if(isset($_SESSION['message'])){
-                $message = $_SESSION['message'];
-            }
             while ($row = mysqli_fetch_assoc($details))
             {
             ?>
             <div class="ui info message">
-               <h1> <?php echo $message ?> </h1>
                 <div class="ui items">
                     <div class="item">
                         <div class="image">
@@ -97,7 +102,6 @@ include ('header.php');
             ?>
         </div>
     </div>
-    <?php $totalitem = $item ?>
 </div>
 <!----- footer------>
 <?php

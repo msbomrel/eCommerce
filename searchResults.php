@@ -21,6 +21,7 @@ if(isset($_POST['submit'])){
        $sql1 = "select * from product where category_id = '$i'";
        $results2 = mysqli_query($conn, $sql1) or die("dbms error");
    }else{
+
        $message = "Items not found";
    }
 
