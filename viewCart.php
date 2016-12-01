@@ -24,7 +24,7 @@ if(isset($_SESSION['user'])){
             $details = mysqli_query($conn, $sql) or die("dbms 1 ect");
         }
         else{
-        $_SESSION['nocart'] = "There is no items available right now";
+      //  $_SESSION['nocart'] = "There is no items available right now";
         }
             $items = mysqli_num_rows($details);
 

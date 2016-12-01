@@ -26,8 +26,8 @@ if(isset($_SESSION['user'])){
             $sql1 = "insert into checkout (uname,p_id,qty,address, phonenumber) VALUES ('$currentUser','$product_id',$qty,'$address',$phonenumber)";
             mysqli_query($conn,$sql1) or die("error");
         }
-        echo "<script>alert('Order Placed Successfully');</script>";
 
+        echo "<script>alert('Your Order has been placed Successfully !!!');</script>";
         header("Location:index.php");
     }
 }
