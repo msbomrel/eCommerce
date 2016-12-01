@@ -28,6 +28,7 @@ if (isset($_POST['submit'])){
     else{
         $query1="update users set name ='$name', username = '$username', password = '$password', role = '$role', status = '$status' WHERE id = '$id'";
         mysqli_query($conn, $query1);
+
         echo "<script>alert('User Updated Successfully');</script>";
         echo "<script>window.location ='../superadmindashboard.php'</script>";
     }

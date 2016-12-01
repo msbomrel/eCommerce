@@ -20,7 +20,7 @@ if (isset($_SESSION['user'])) {
         $res = mysqli_query($conn, $sql) or die("dbms error");
         if ($res) {
 
-            echo "<script>alert('Item added successfully!!');</script>";
+            /*echo "<script>alert('Item added successfully!!');</script>";*/
             echo "<script>window.location = 'viewCart.php';</script>";
 
         }

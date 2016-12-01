@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
             if ($row['role'] == "admin"){
             $_SESSION['role'] = $row['role'];
             $_SESSION['user'] = $username;
-            echo "<script>alert('You have logged in successfully!!');</script>";
+            /*echo "<script>alert('You have logged in successfully!!');</script>";*/
             echo "<script>window.location='admindashboard.php';</script>";
 
             }
@@ -22,14 +22,12 @@ if(isset($_POST['submit'])){
             elseif ($row['role'] == "superadmin"){
             $_SESSION['role'] = $row['role'];
             $_SESSION['user'] = $username;
-
-            echo "<script>alert('You have logged in successfylly !!');</script>";
             echo "<script>window.location='superadmindashboard.php';</script>";
+
             }
             else{
                 $_SESSION['user'] =$username;
                 $_SESSION['role'] =$row['role'];
-                echo "<script>alert('You have logged in successfylly !!');</script>";
                 echo "<script>window.location='index.php';</script>";
             }
         }
@@ -81,7 +79,7 @@ if(isset($_POST['submit'])){
                     <input type="password" name="password" placeholder="Password">
                 </div>
                 <div class="field">
-                    <input type="submit" name="submit" value="Sign In" class="ui button large fluid green">
+                    <input type="submit" name="submit" value="Sigwn In" class="ui button large fluid green">
                 </div>
         </form>
 
@@ -90,9 +88,6 @@ if(isset($_POST['submit'])){
         </div>
     </div>
 </div>
-<div class="content">
-
-
     <?php include "footer.php";?>
 </body>
 </html>
