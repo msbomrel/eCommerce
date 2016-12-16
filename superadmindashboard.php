@@ -2,7 +2,7 @@
 session_start();
 include("include/connect.php");
 
-if(isset($_SESSION['user'])) {
+if(isset($_SESSION['user']) && ($_SESSION['role'] == "superadmin")) {
     $query = "select * from users";
     $results = mysqli_query($conn, $query) or die("Cannot connect");
 }else{?>

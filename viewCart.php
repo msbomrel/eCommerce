@@ -101,7 +101,7 @@ if(isset($_SESSION['emptycart'])){
                         <div class="content">
                             <a class="header"><h1><?php echo $row["name"];?></h1></a>
                             <div class="description">
-                                Price : Rs <?php echo $row["price"];?> <br>q
+                                Price : Rs <?php echo $row["price"];?> <br>
                                 Discount : Rs <?php echo $row["discount"];?>
                                 <div class="ui inverted section divider"></div>
                                 <!--- Button for Cart Update--->

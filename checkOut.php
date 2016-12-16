@@ -25,9 +25,18 @@ if(isset($_SESSION['user'])){
 
             $sql1 = "insert into checkout (uname,p_id,qty,address, phonenumber) VALUES ('$currentUser','$product_id',$qty,'$address',$phonenumber)";
             mysqli_query($conn,$sql1) or die("error");
+
         }
 
-        echo "<script>alert('Your Order has been placed Successfully !!!');</script>";
+        $query = "select stock from product where id = '$product_id'";
+        $ori_stock = mysqli_query($conn, $query);
+
+        $res = mysqli_fetch_array($ori_stock);
+        $rem_stock = $res['stock']-$qty;
+
+        mysqli_query($conn, "update product set stock = GREATEST(0,$rem_stock) WHERE id='$product_id'");
+
+        echo "<script>alert('Your Order has been placed Successfully !!!')</script>";
         header("Location:index.php");
     }
 }
